@@ -160,44 +160,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Course.cs">
-      <DependentUpon>StudentGradeCenterDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Grade.cs">
-      <DependentUpon>StudentGradeCenterDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GradeBreakdown.cs">
-      <DependentUpon>StudentGradeCenterDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GradeType.cs">
-      <DependentUpon>StudentGradeCenterDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Semester.cs">
-      <DependentUpon>StudentGradeCenterDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Student.cs">
-      <DependentUpon>StudentGradeCenterDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentGradeCenterDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentGradeCenterDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentGradeCenterDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentGradeCenterDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentGradeCenterDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentGradeCenterDataModel.edmx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -233,23 +200,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <EntityDeploy Include="StudentGradeCenterDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StudentGradeCenterDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="StudentGradeCenterDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentGradeCenterDataModel.edmx</DependentUpon>
-      <LastGenOutput>StudentGradeCenterDataModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="StudentGradeCenterDataModel.edmx.diagram">
-      <DependentUpon>StudentGradeCenterDataModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="StudentGradeCenterDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentGradeCenterDataModel.edmx</DependentUpon>
-      <LastGenOutput>StudentGradeCenterDataModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

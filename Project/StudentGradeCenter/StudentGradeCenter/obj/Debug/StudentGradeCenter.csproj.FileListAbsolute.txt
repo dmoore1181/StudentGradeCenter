@@ -50,6 +50,5 @@ C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGrad
 C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenter\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenter\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenter\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenter\obj\Debug\StudentGradeCenter.csprojResolveAssemblyReference.cache
 C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenter\obj\Debug\StudentGradeCenter.dll
 C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenter\obj\Debug\StudentGradeCenter.pdb

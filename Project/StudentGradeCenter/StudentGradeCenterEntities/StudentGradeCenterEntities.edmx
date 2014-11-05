@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StudentGradeCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="SemesterID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="GradeId" />
+          </Key>
+          <Property Name="GradeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GradeTypeId" Type="int" Nullable="false" />
+          <Property Name="Grade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GradeBreakdown">
+          <Key>
+            <PropertyRef Name="GradeBreakDownId" />
+          </Key>
+          <Property Name="GradeBreakDownId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Letter" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Min" Type="int" Nullable="false" />
+          <Property Name="Max" Type="int" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GradeType">
+          <Key>
+            <PropertyRef Name="GradeTypeId" />
+          </Key>
+          <Property Name="GradeTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GradeTypeName" Type="varchar" MaxLength="250" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="GradeWeight" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Semester">
+          <Key>
+            <PropertyRef Name="SemesterID" />
+          </Key>
+          <Property Name="SemesterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SemesterName" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Course_SemesterId_Semester">
+          <End Role="Semester" Type="Self.Semester" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semester">
+              <PropertyRef Name="SemesterID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="SemesterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_StudentId_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_GradeTypeId_GradeType">
+          <End Role="GradeType" Type="Self.GradeType" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeType">
+              <PropertyRef Name="GradeTypeId" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="GradeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GradeBreakdown_CourseId_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="GradeBreakdown" Type="Self.GradeBreakdown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="GradeBreakdown">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GradeType_CourseId_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="GradeType" Type="Self.GradeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="GradeType">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentGradeCenterModelStoreContainer">
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GradeBreakdown" EntityType="Self.GradeBreakdown" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GradeType" EntityType="Self.GradeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Semester" EntityType="Self.Semester" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Course_SemesterId_Semester" Association="Self.FK_Course_SemesterId_Semester">
+            <End Role="Semester" EntitySet="Semester" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_StudentId_Student" Association="Self.FK_Course_StudentId_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_GradeTypeId_GradeType" Association="Self.FK_Grade_GradeTypeId_GradeType">
+            <End Role="GradeType" EntitySet="GradeType" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GradeBreakdown_CourseId_Course" Association="Self.FK_GradeBreakdown_CourseId_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="GradeBreakdown" EntitySet="GradeBreakdown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GradeType_CourseId_Course" Association="Self.FK_GradeType_CourseId_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="GradeType" EntitySet="GradeType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentGradeCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="CourseName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="SemesterID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_Course_SemesterId_Semester" FromRole="Course" ToRole="Semester" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Course_StudentId_Student" FromRole="Course" ToRole="Student" />
+          <NavigationProperty Name="GradeBreakdowns" Relationship="Self.FK_GradeBreakdown_CourseId_Course" FromRole="Course" ToRole="GradeBreakdown" />
+          <NavigationProperty Name="GradeTypes" Relationship="Self.FK_GradeType_CourseId_Course" FromRole="Course" ToRole="GradeType" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="GradeId" />
+          </Key>
+          <Property Name="GradeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GradeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Grade1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GradeType" Relationship="Self.FK_Grade_GradeTypeId_GradeType" FromRole="Grade" ToRole="GradeType" />
+        </EntityType>
+        <EntityType Name="GradeBreakdown">
+          <Key>
+            <PropertyRef Name="GradeBreakDownId" />
+          </Key>
+          <Property Name="GradeBreakDownId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Letter" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Min" Type="Int32" Nullable="false" />
+          <Property Name="Max" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_GradeBreakdown_CourseId_Course" FromRole="GradeBreakdown" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="GradeType">
+          <Key>
+            <PropertyRef Name="GradeTypeId" />
+          </Key>
+          <Property Name="GradeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GradeTypeName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="GradeWeight" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_GradeType_CourseId_Course" FromRole="GradeType" ToRole="Course" />
+          <NavigationProperty Name="Grades" Relationship="Self.FK_Grade_GradeTypeId_GradeType" FromRole="GradeType" ToRole="Grade" />
+        </EntityType>
+        <EntityType Name="Semester">
+          <Key>
+            <PropertyRef Name="SemesterID" />
+          </Key>
+          <Property Name="SemesterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SemesterName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_Course_SemesterId_Semester" FromRole="Semester" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_Course_StudentId_Student" FromRole="Student" ToRole="Course" />
+        </EntityType>
+        <Association Name="FK_Course_SemesterId_Semester">
+          <End Role="Semester" Type="Self.Semester" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semester">
+              <PropertyRef Name="SemesterID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="SemesterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_StudentId_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GradeBreakdown_CourseId_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="GradeBreakdown" Type="Self.GradeBreakdown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="GradeBreakdown">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GradeType_CourseId_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="GradeType" Type="Self.GradeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="GradeType">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_GradeTypeId_GradeType">
+          <End Role="GradeType" Type="Self.GradeType" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeType">
+              <PropertyRef Name="GradeTypeId" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="GradeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentGradeCenterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="Grades" EntityType="Self.Grade" />
+          <EntitySet Name="GradeBreakdowns" EntityType="Self.GradeBreakdown" />
+          <EntitySet Name="GradeTypes" EntityType="Self.GradeType" />
+          <EntitySet Name="Semesters" EntityType="Self.Semester" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <AssociationSet Name="FK_Course_SemesterId_Semester" Association="Self.FK_Course_SemesterId_Semester">
+            <End Role="Semester" EntitySet="Semesters" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_StudentId_Student" Association="Self.FK_Course_StudentId_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GradeBreakdown_CourseId_Course" Association="Self.FK_GradeBreakdown_CourseId_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="GradeBreakdown" EntitySet="GradeBreakdowns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GradeType_CourseId_Course" Association="Self.FK_GradeType_CourseId_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="GradeType" EntitySet="GradeTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_GradeTypeId_GradeType" Association="Self.FK_Grade_GradeTypeId_GradeType">
+            <End Role="GradeType" EntitySet="GradeTypes" />
+            <End Role="Grade" EntitySet="Grades" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentGradeCenterModelStoreContainer" CdmEntityContainer="StudentGradeCenterEntities">
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="StudentGradeCenterModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="StudentGradeCenterModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="GradeTypeId" ColumnName="GradeTypeId" />
+                <ScalarProperty Name="Grade1" ColumnName="Grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GradeBreakdowns">
+            <EntityTypeMapping TypeName="StudentGradeCenterModel.GradeBreakdown">
+              <MappingFragment StoreEntitySet="GradeBreakdown">
+                <ScalarProperty Name="GradeBreakDownId" ColumnName="GradeBreakDownId" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Min" ColumnName="Min" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GradeTypes">
+            <EntityTypeMapping TypeName="StudentGradeCenterModel.GradeType">
+              <MappingFragment StoreEntitySet="GradeType">
+                <ScalarProperty Name="GradeTypeId" ColumnName="GradeTypeId" />
+                <ScalarProperty Name="GradeTypeName" ColumnName="GradeTypeName" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="GradeWeight" ColumnName="GradeWeight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semesters">
+            <EntityTypeMapping TypeName="StudentGradeCenterModel.Semester">
+              <MappingFragment StoreEntitySet="Semester">
+                <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+                <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="StudentGradeCenterModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

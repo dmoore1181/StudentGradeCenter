@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentGradeCenter", "StudentGradeCenter\StudentGradeCenter.csproj", "{EBFCF4DB-00D5-4FF0-AEC3-CE6CBB1B73EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentGradeCenterEntities", "StudentGradeCenterEntities\StudentGradeCenterEntities.csproj", "{2D91453D-262E-454A-A6FE-09C81C7A67D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EBFCF4DB-00D5-4FF0-AEC3-CE6CBB1B73EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBFCF4DB-00D5-4FF0-AEC3-CE6CBB1B73EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBFCF4DB-00D5-4FF0-AEC3-CE6CBB1B73EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D91453D-262E-454A-A6FE-09C81C7A67D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D91453D-262E-454A-A6FE-09C81C7A67D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D91453D-262E-454A-A6FE-09C81C7A67D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D91453D-262E-454A-A6FE-09C81C7A67D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

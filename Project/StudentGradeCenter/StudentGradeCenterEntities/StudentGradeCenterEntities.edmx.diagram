@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="32d312c2007c4f18acd79124817ead06" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentGradeCenterModel.Course" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentGradeCenterModel.Grade" Width="1.5" PointX="7.875" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentGradeCenterModel.GradeBreakdown" Width="1.5" PointX="5.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentGradeCenterModel.GradeType" Width="1.5" PointX="4.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentGradeCenterModel.Semester" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentGradeCenterModel.Student" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="StudentGradeCenterModel.FK_Course_SemesterId_Semester" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentGradeCenterModel.FK_Course_StudentId_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentGradeCenterModel.FK_GradeBreakdown_CourseId_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentGradeCenterModel.FK_GradeType_CourseId_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentGradeCenterModel.FK_Grade_GradeTypeId_GradeType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

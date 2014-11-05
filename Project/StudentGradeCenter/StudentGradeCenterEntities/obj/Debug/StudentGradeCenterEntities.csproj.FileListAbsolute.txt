@@ -1,0 +1,9 @@
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\bin\Debug\StudentGradeCenterEntities.dll.config
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\bin\Debug\StudentGradeCenterEntities.dll
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\bin\Debug\StudentGradeCenterEntities.pdb
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\bin\Debug\EntityFramework.dll
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\bin\Debug\EntityFramework.xml
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\obj\Debug\StudentGradeCenterEntities.dll
+C:\Users\David\Desktop\StudentGradeCenter\Project\StudentGradeCenter\StudentGradeCenterEntities\obj\Debug\StudentGradeCenterEntities.pdb
